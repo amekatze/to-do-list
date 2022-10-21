@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root{
+    --main-color: #95d6c9;
+    --light: #fbfbfb;
+    --mid: #41bcac;
+    --text: rgba(19, 19, 19, 0.571);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text);
+}
+
+body {
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+textarea, input { outline: none; }
+
+input, button {
+    background-color: var(--mid);
+    border-style: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+input::placeholder{
+    color: var(--text);
+}
+
+.to-do-input h1{
+    color: var(--light);
+}
+
+.to-do-container li {
+    list-style: none;
+    display: flex;
+}
+
+.to-do-container ul{
+    padding: 0;
+}
+
+.to-do-container {
+    background-color: var(--main-color);
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.to-do-container input[readonly] {
+    background-color: var(--light);
+    border-radius: 0;
+    border: none;
+}
+
+.to-do-container input {
+    background-color: var(--light);
+    border-radius: 0;
+    border: 1px dotted #8ca4f8;
+}
+
+.to-do-container button {
+    padding: 0.25rem;
+}
+
+.to-do-container input, .to-do-container button {
+    margin-bottom: 0.4rem;
+}
+
+
+.delete {
+    background-color: #f88c91;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.edit {
+    background-color: #debfd5;
+    border-radius: 0;
+}
+
+.check {
+    background-color: #fea577;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.checked {
+    background-color: var( --mid: #41bcac;);
+}
