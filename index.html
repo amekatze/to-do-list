@@ -4,26 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>To-Do List</title>
 </head>
 <body>
-<div class="to-do-input">
-    <h1>My Todo List</h1>
+
+<div class="projects-sidebar">
+    <h2>Tasks</h2>
+    <ul>
+        <li class="active"><i class="fa-solid fa-bars"></i>All</li>
+        <li><i class="fa-regular fa-calendar-check"></i>Today</li>
+        <li><i class="fa-regular fa-calendar"></i></i>This Week</li>
+        <li><i class="fa-regular fa-folder-closed"></i>Completed</li>
+    </ul>
+
+    <h2>Projects</h2>
+    <ul>
+        <li>Project One</li>
+        <li>Project Two</li>
+    </ul>
+
+</div>
+
+<div class="todo-container">
+<div class="addtodo">
+    <h2>Add task</h2>
     <form>
-    <input
-        type="text"
-        placeholder="enter task"
-        id="input-todo"
-        >
-    <input id="submit" type="submit">
+        <input id="taskinput" type="text">
+        <input id="dateinput" type="date" id="date-input">
+        <button id="submit" type="submit"><i class="fa-regular fa-square-plus fa-xl"></i></button>
     </form>
 </div>
 
-<div class="to-do-container">
-    <ul id="to-do-list">
+<div class="todolist">
+    <ul id="todolist">
+
     </ul>
+</div>
+
 </div>
 
 <script src="./bundle.js"></script>    
