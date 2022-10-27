@@ -2,14 +2,61 @@ import { format, compareAsc } from 'date-fns'
 import './style.css';
 
 // Dom
-const submitTodo = document.getElementById('submit')
-const todoList = document.getElementById('to-do-list')
-const inputTodo = document.getElementById('input-todo');
+const submitTodo = document.getElementById('submit');
+const todoList = document.getElementById('todolist');
+const taskInput = document.getElementById('taskinput');
+const dateInput = document.getElementById('dateinput');
+
 
 //Event Listeners
-
 submitTodo.addEventListener('click', addTodo);
-todoList.addEventListener('click', actionTodo)
+todoList.addEventListener('click', actionTodo);
+
+
+let todoArray = [
+    {task:'Make an amazing Todolist', 
+    date:'2022-10-20',
+    complete: true },
+    {task:'Write a bestselling Novel',
+    date:'2027-12-01',
+    complete: true}
+];
+
+const todoTask = (task, date, complete) => {
+    todoArray.push({
+        task,
+        date,
+        complete
+    })
+    return {task, date, complete}
+}
+
+todoArray.forEach(todo => createTaskDom(todo.task, todo.date))
+
+function createTaskDom(task, date){
+    const todoItem = document.createElement('li');
+    const check = document.createElement('button');
+    const taskItem = document.createElement('input');
+    const taskDate = document.createElement('input');
+    const del = document.createElement('button');
+    
+    todoItem.classList.add('pending');
+    check.classList.add('status');
+    taskItem.classList.add('task');
+    del.classList.add('delete');
+
+    taskItem.type = "text";
+    taskItem.readOnly = true;
+    taskDate.type = "date";
+    check.innerHTML = '<i class="fa-regular fa-circle fa-xl"></i>';
+    del.innerHTML = '<i class="fa-regular fa-trash-can fa-xl"></i>';
+
+    taskItem.value = task;
+    taskDate.value = date;
+
+    todoItem.append(check,taskItem,taskDate,del);
+    todoList.appendChild(todoItem); 
+}
 
 
 //Functions
@@ -17,61 +64,32 @@ todoList.addEventListener('click', actionTodo)
 function addTodo(event){
     event.preventDefault(); //prevent refresh
 
-    const li = document.createElement('li');
-    // Check Button 
-    const checkBtn = document.createElement('button');
-    checkBtn.classList.add('check');
-    checkBtn.classList.add('material-symbols-outlined')
-    checkBtn.innerText = 'check_box_outline_blank'
-    li.appendChild(checkBtn);
-    // Todo Item
-    const todoItem = document.createElement('input');
-    todoItem.type = 'text';
-    todoItem.readOnly = true;
-    todoItem.value = inputTodo.value;
-    li.appendChild(todoItem);
-    // Edit Button
-    const editBtn = document.createElement('button');
-    editBtn.classList.add('edit');
-    editBtn.classList.add('material-symbols-outlined')
-    editBtn.innerText = 'edit_note'
-    li.appendChild(editBtn);
-    // Delete Button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('delete');
-    deleteBtn.classList.add('material-symbols-outlined')
-    deleteBtn.innerText = 'delete'
-    li.appendChild(deleteBtn);
-
-    todoList.appendChild(li);
-    inputTodo.value = '';
+    todoTask(taskInput.value, dateInput.value, true);
+    createTaskDom(taskInput.value, dateInput.value);
+    taskInput.value = ''; 
 }
 
+// TodoList Actions
 function actionTodo(e){
     const item = e.target;
-    const action = item.classList[0]
+    const action = item.classList[0];
     // Delete Todo
-    if (action == 'delete'){
+    if( action == 'delete'){
         item.parentElement.remove();
     }
-    // Check Todo 
-    if (action == 'check' && item.innerText == 'check_box_outline_blank' ){
-        item.innerText = 'check_box';
-        item.style.backgroundColor = '#41bcac';
-        item.nextSibling.style.backgroundColor = '#41bcac';
-        item.nextSibling.style.textDecoration = 'line-through'
-        item.nextSibling.nextSibling.style.backgroundColor = '#41bcac';
-        item.nextSibling.nextSibling.nextSibling.style.backgroundColor = '#41bcac';
-    } else if (action == 'check') {
-        item.innerText = 'check_box_outline_blank';
-        item.style.backgroundColor = '#fea577';
-        item.nextSibling.style.backgroundColor = '#fbfbfb';
-        item.nextSibling.style.textDecoration = 'none'
-        item.nextSibling.nextSibling.style.backgroundColor = '#debfd5';
-        item.nextSibling.nextSibling.nextSibling.style.backgroundColor = '#f88c91';
-    }
-    // Edit Todo
-    if (action == 'edit'){
-        item.previousSibling.readOnly = item.previousSibling.readOnly == true ? false : true;
+
+    if( action == 'status'){
+        const listItem = item.parentElement;
+        if (listItem.classList[0] == 'pending'){
+            listItem.classList.remove('pending');
+            listItem.classList.add('complete');
+            item.innerHTML = '<i class="fa-regular fa-circle-check fa-xl"></i>';
+        } else {
+            listItem.classList.remove('complete');
+            listItem.classList.add('pending');
+            item.innerHTML = '<i class="fa-regular fa-circle fa-xl"></i>';
+        }
     }
 }
+
+

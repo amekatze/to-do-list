@@ -1,96 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Rajdhani&display=swap');
 
-:root{
-    --main-color: #95d6c9;
-    --light: #fbfbfb;
-    --mid: #41bcac;
-    --text: rgba(19, 19, 19, 0.571);
-}
-
-* {
+:root {
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
-    color: var(--text);
+    --accent: #6366f1;
+    --background: #edf1f5;
+    --light: #fefefe;
+    --highlight: #c7d2fe;
+    --header: #334155;
+    --shadow: 3px 3px 5px 0px #64748b61;
 }
 
 body {
-    background-color: var(--main-color);
+    margin: 0;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--background);
+    overflow-y: hidden;
 }
 
-textarea, input { outline: none; }
-
-input, button {
-    background-color: var(--mid);
-    border-style: none;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-}
-
-input::placeholder{
-    color: var(--text);
-}
-
-.to-do-input h1{
-    color: var(--light);
-}
-
-.to-do-container li {
-    list-style: none;
-    display: flex;
-}
-
-.to-do-container ul{
-    padding: 0;
-}
-
-.to-do-container {
-    background-color: var(--main-color);
-    padding: 0.7rem;
-    border-radius: 0.5rem;
-    margin-top: 0.3rem;
-}
-
-.to-do-container input[readonly] {
+.projects-sidebar {
     background-color: var(--light);
-    border-radius: 0;
+    padding: 20px 15px 0 30px;
+    min-width: 250px;
+    width: 350px;
+    box-shadow: var(--shadow);
+}
+
+li, ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+.projects-sidebar li {
+    padding: 10px;
+    margin: 3px;
+    margin-right: 20px;
+}
+
+.projects-sidebar li:hover, .active{
+    background-color: var(--accent);
+    color: var(--light);
+    border-radius: 5px;
+}
+
+.projects-sidebar i {
+    padding-right: 5px;
+}
+
+/*TO DO CONTAINER */
+.todo-container {
+    width: 80%;
+    padding: 0 100px;
+}
+
+.todo-container input {
+    font-size: 17px;
     border: none;
 }
 
-.to-do-container input {
+/* TO DO FORM */
+.addtodo {
     background-color: var(--light);
-    border-radius: 0;
-    border: 1px dotted #8ca4f8;
+    padding: 20px 40px 50px 40px;
+    margin-top: 30px;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
 }
 
-.to-do-container button {
-    padding: 0.25rem;
+.addtodo form {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
 }
 
-.to-do-container input, .to-do-container button {
-    margin-bottom: 0.4rem;
+.addtodo input {
+    background-color: var(--background);
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
 }
 
-
-.delete {
-    background-color: #f88c91;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+.date-input {
+    padding: 1px;
 }
 
-.edit {
-    background-color: #debfd5;
-    border-radius: 0;
+.addtodo button {
+    width: 38px;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 6px;
+    color: var(--light);
+    padding: 10px;
 }
 
-.check {
-    background-color: #fea577;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+/* TO DO LIST*/
+.todolist {
+    margin-top: 40px;
+    background-color: var(--light);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
 }
 
-.checked {
-    background-color: var( --mid: #41bcac;);
+.todolist li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    gap: 10px;
+    height: 50px;
+    border-bottom: 1px solid #cbd5e1;
 }
+
+.todolist input {
+    height: 40px;
+    padding: 0 30px;
+}
+
+.todolist button {
+    background-color: var(--accent);
+    padding: 10px;
+    border: none;
+    color: var(--light);
+    border-radius: 5px;
+}
+
+.pending .status {
+    background-color: #fb7185;
+}
+
+.complete .status {
+    background-color: #34d399;
+}
+
+.complete {
+    text-decoration:line-through;
+}
+
+.todolist .task {
+    flex-grow: 2;
+}
+
+.fa-regular {
+    pointer-events: none;
+}
+
