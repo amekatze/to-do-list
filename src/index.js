@@ -2,37 +2,43 @@ import { format, compareAsc } from 'date-fns'
 import './style.css';
 
 // Dom
-const submitTodo = document.getElementById('submit');
-const todoList = document.getElementById('todolist');
-const taskInput = document.getElementById('taskinput');
-const dateInput = document.getElementById('dateinput');
+const submitTodoDom = document.getElementById('submit');
+const todoListDom = document.getElementById('todolist');
+const taskInputDom = document.getElementById('taskinput');
+const dateInputDom = document.getElementById('dateinput');
 
 
 //Event Listeners
-submitTodo.addEventListener('click', addTodo);
-todoList.addEventListener('click', actionTodo);
+submitTodoDom.addEventListener('click', addTodo);
+todoListDom.addEventListener('click', actionTodo);
 
 
-let todoArray = [
-    {task:'Make an amazing Todolist', 
-    date:'2022-10-20',
-    complete: true },
-    {task:'Write a bestselling Novel',
-    date:'2027-12-01',
-    complete: true}
-];
+let todos = JSON.parse(localStorage.getItem("todos"));
 
 const todoTask = (task, date, complete) => {
-    todoArray.push({
+    todos.push({
         task,
         date,
         complete
     })
+    localStorage.setItem("todos", JSON.stringify(todos));
     return {task, date, complete}
 }
 
-todoArray.forEach(todo => createTaskDom(todo.task, todo.date))
+todos.forEach(todo => createTaskDom(todo.task, todo.date))
 
+
+//Functions
+// Create Todo Item
+function addTodo(event){
+    event.preventDefault(); //prevent refresh
+
+    todoTask(taskInputDom.value, dateInputDom.value, true);
+    createTaskDom(taskInputDom.value, dateInputDom.value);
+    taskInputDom.value = ''; 
+}
+
+// Create Item in Dom
 function createTaskDom(task, date){
     const todoItem = document.createElement('li');
     const check = document.createElement('button');
@@ -55,31 +61,22 @@ function createTaskDom(task, date){
     taskDate.value = date;
 
     todoItem.append(check,taskItem,taskDate,del);
-    todoList.appendChild(todoItem); 
-}
-
-
-//Functions
-// Create Todo Item
-function addTodo(event){
-    event.preventDefault(); //prevent refresh
-
-    todoTask(taskInput.value, dateInput.value, true);
-    createTaskDom(taskInput.value, dateInput.value);
-    taskInput.value = ''; 
+    todoListDom.appendChild(todoItem); 
 }
 
 // TodoList Actions
 function actionTodo(e){
     const item = e.target;
     const action = item.classList[0];
+    const listItem = item.parentElement;
+    const todoTask = listItem.children[1].value;
     // Delete Todo
     if( action == 'delete'){
+        removeTodoFromStorage(todoTask);
         item.parentElement.remove();
     }
 
     if( action == 'status'){
-        const listItem = item.parentElement;
         if (listItem.classList[0] == 'pending'){
             listItem.classList.remove('pending');
             listItem.classList.add('complete');
@@ -90,6 +87,15 @@ function actionTodo(e){
             item.innerHTML = '<i class="fa-regular fa-circle fa-xl"></i>';
         }
     }
+
+}
+
+function removeTodoFromStorage(todoTask){
+    const todoIndex = todos.findIndex(todo => {
+        return todo.task == todoTask;
+    })
+    todos.splice(todoIndex, 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 

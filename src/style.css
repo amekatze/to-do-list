@@ -54,7 +54,7 @@ li, ul {
 /*TO DO CONTAINER */
 .todo-container {
     width: 80%;
-    padding: 0 100px;
+    padding: 0 5%;
 }
 
 .todo-container input {
@@ -81,7 +81,7 @@ li, ul {
     background-color: var(--background);
     border-radius: 5px;
     padding: 10px;
-    width: 300px;
+    width: 40%;
 }
 
 .date-input {
