@@ -5,7 +5,7 @@
     --accent: #6366f1;
     --background: #edf1f5;
     --light: #fefefe;
-    --highlight: #c7d2fe;
+    --highlight: #a5b4fc;
     --header: #334155;
     --shadow: 3px 3px 5px 0px #64748b61;
 }
@@ -45,6 +45,11 @@ li, ul {
     background-color: var(--accent);
     color: var(--light);
     border-radius: 5px;
+}
+
+.projects-sidebar li:hover {
+    background-color: #dbeafe;
+    color: #000;
 }
 
 .projects-sidebar i {
@@ -97,6 +102,10 @@ li, ul {
     padding: 10px;
 }
 
+.addtodo button:hover, .todolist button:hover {
+    background-color: #5254d3;;
+}
+
 /* TO DO LIST*/
 .todolist {
     margin-top: 40px;
@@ -132,8 +141,16 @@ li, ul {
     background-color: #fb7185;
 }
 
+.pending .status:hover {
+    background-color: #fc5c74;
+}
+
 .complete .status {
     background-color: #34d399;
+}
+
+.complete .status:hover {
+    background-color: #1fc085;
 }
 
 .complete {

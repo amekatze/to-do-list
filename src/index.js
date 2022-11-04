@@ -13,7 +13,7 @@ submitTodoDom.addEventListener('click', addTodo);
 todoListDom.addEventListener('click', actionTodo);
 
 
-let todos = JSON.parse(localStorage.getItem("todos"));
+let todos = localStorage.length == 0 ? [] : JSON.parse(localStorage.getItem("todos"));
 
 const todoTask = (task, date, complete) => {
     todos.push({
@@ -26,7 +26,6 @@ const todoTask = (task, date, complete) => {
 }
 
 todos.forEach(todo => createTaskDom(todo.task, todo.date))
-
 
 //Functions
 // Create Todo Item
