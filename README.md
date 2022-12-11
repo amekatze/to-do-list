@@ -2,7 +2,7 @@
 
 *Status: Ongoing*
 
-- [Live preview](amekatze.github.io/to-do-list)
+- [Live preview](https://amekatze.github.io/to-do-list/)
 
 
 **Current features:**
@@ -14,6 +14,8 @@
 - Sort tasks by date (today, this week)
 - Archive completed tasks and show them under 'Completed'
 - Create projects with isolated task lists 
+
+
 
 Built with:
 - HTML5
