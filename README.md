@@ -1,18 +1,16 @@
-# To-Do-List
+# To-Do List App
 
-## To-Do List App
-
-**Status: Ongoing**
+*Status: Ongoing*
 
 - [Live preview](amekatze.github.io/to-do-list)
 
 
-Current features:
+**Current features:**
 - Save & update tasks in local storage
 - Add & delete tasks
 - Chage status of tasks
 
-Pending features:
+**Pending features:**
 - Sort tasks by date (today, this week)
 - Archive completed tasks and show them under 'Completed'
 - Create projects with isolated task lists 
@@ -20,4 +18,4 @@ Pending features:
 Built with:
 - HTML5
 - CSS
-- Javascript (with date-fns)
+- Javascript (& date-fns)
