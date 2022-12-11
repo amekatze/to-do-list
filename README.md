@@ -1,10 +1,11 @@
 # To-Do-List
 
-(Status: Ongoing)
+## To-Do List App
 
-[Live preview][https://amekatze.github.io/to-do-list/]
+**Status: Ongoing**
 
-This is a To-Do List App
+- (Live preview)[https://amekatze.github.io/to-do-list/]
+
 
 Current features:
 - Save & update tasks in local storage
