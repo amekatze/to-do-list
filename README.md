@@ -4,7 +4,7 @@
 
 **Status: Ongoing**
 
-- (Live preview)[https://amekatze.github.io/to-do-list/]
+- [Live preview](amekatze.github.io/to-do-list)
 
 
 Current features:
